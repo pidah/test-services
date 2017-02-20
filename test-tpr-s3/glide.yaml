@@ -1,0 +1,8 @@
+package: github.com/pearsontechnology/test-services/test-tpr-s3
+import:
+- package: github.com/caarlos0/env
+  version: ^2.1.0
+- package: github.com/gorilla/handlers
+  version: ^1.2.0
+- package: github.com/gorilla/mux
+  version: ^1.3.0

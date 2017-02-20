@@ -1,0 +1,8 @@
+- name: fakeservice
+  url: https://aws.afakeservice.com
+  interval: 5
+- name: aws
+  url: https://aws.amazon.com
+  interval: 3
+- name: google
+  url: https://www.google.com
