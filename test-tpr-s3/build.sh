@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=${1:-0.0.24}
+VERSION=${1:-0.0.28}
 DOCKER_REPO="pidah/test-tpr-s3"
 DOCKER_IMAGE=${DOCKER_REPO}:${VERSION}
 

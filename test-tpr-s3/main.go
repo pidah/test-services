@@ -105,17 +105,14 @@ func checkS3Object(tpr string) {
 	})
 	if err != nil {
 		Logger.Error(err)
+	} else {
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(result.Body)
+		responseStr := buf.String()
+		if strings.TrimSpace(string(responseStr)) == tpr {
+			testServiceState = "OK"
+		}
 	}
-	//	Logger.Info(result)
-	buf := new(bytes.Buffer)
-	buf.ReadFrom(result.Body)
-	responseStr := buf.String()
-	//	Logger.Info(responseStr)
-	//	if strings.TrimSpace(string(responseStr)) == "testing" {
-	if strings.TrimSpace(string(responseStr)) == tpr {
-		testServiceState = "OK"
-	}
-
 	Lock.Lock()
 	defer Lock.Unlock()
 	Lock.State["status"] = testServiceState
