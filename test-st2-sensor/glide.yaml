@@ -1,0 +1,8 @@
+package: github.com/pearsontechnology/test-services/test-st2-sensor
+import:
+- package: github.com/caarlos0/env
+  version: ^2.1.0
+- package: github.com/sirupsen/logrus
+  version: ^0.11.2
+- package: gopkg.in/gin-gonic/gin.v1
+  version: ^1.1.4

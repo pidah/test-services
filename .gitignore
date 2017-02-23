@@ -1,3 +1,4 @@
 test-tpr-s3/test-tpr-s3
+test-st2-sensor/test-st2-sensor
 *.swp
 .DS_Store
