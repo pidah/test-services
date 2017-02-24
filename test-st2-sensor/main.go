@@ -36,6 +36,7 @@ func Info(args ...interface{}) {
 }
 
 var environment = os.Getenv("ENVIRONMENT")
+var stackId = os.Getenv("STACK_ID")
 
 // Global state of test services with a lock
 var Lock = struct {
@@ -43,8 +44,7 @@ var Lock = struct {
 	State map[string]string
 }{State: make(map[string]string)}
 
-const url = "https://stackstorm.pidah.prsn-dev.io/api/v1/executions/"
-//const url = "https://10.251.0.195/api/v1/executions/"
+const url = "https://stackstorm-a.pidah.kube/api/v1/executions/"
 const St2ApiKey = "NzlhYTFjNjE5ZGZhMTk1NGQxYzYzNzMwYTJjMTJiN2Y0OTg0MjJjMmJjMTNhNjdjY2QzNGUwZDU1NDQ5MmQ4MQ"
 
 func init() {

@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=${1:-0.0.9}
+VERSION=${1:-0.0.10}
 DOCKER_REPO="pidah/test-st2-sensor"
 DOCKER_IMAGE=${DOCKER_REPO}:${VERSION}
 
