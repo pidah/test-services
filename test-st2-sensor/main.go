@@ -56,7 +56,7 @@ func init() {
 
 	client = &http.Client{Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true, RootCAs: pool}}}
 	go func() {
-		for _ = range time.Tick(time.Duration(3) * time.Second) {
+		for _ = range time.Tick(time.Duration(120) * time.Second) {
 
 			executeStackstormAction()
 		}
@@ -134,7 +134,7 @@ func executeStackstormAction() {
 	Logger.Info(St2Response.ExecutionId, " result: ", St2Response.Result.Result)
 
 	if strings.Contains(St2Response.Result.Result, "failed") {
-		Logger.Error("A Stackstorm sensor has failed.")
+		Logger.Error("At least one stackstorm sensor has failed.")
 	} else {
 		testServiceState = "OK"
 	}
