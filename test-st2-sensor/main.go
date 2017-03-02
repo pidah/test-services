@@ -44,9 +44,11 @@ var Lock = struct {
 	State map[string]string
 }{State: make(map[string]string)}
 
-const url = "https://stackstorm-a.pidah.kube/api/v1/executions/"
+const url = "https://stackstorm-+stackId+.+environment.kube/api/v1/executions/"
 const St2ApiKey = "NzlhYTFjNjE5ZGZhMTk1NGQxYzYzNzMwYTJjMTJiN2Y0OTg0MjJjMmJjMTNhNjdjY2QzNGUwZDU1NDQ5MmQ4MQ"
-
+//const St2ApiKey = "d89c3eb46e255b0678e340814bb8ab681a95ce4350efefc3db11a6843e1de670e12c6da0ffe5af2c3d7ba7cb59f96786a49309ff865e27d44e1a8aedb0ea8a75"
+//const St2ApiKey = "1b02aa38dbfd4ba24d4328a3cab41ed3dcf85ac3963cbba36ed52c0538b8d39b73608345a4898c8b0ec55e1ba15fb516f47f59a77b10702b24485358cb9aed96"
+//const St2ApiKey = "598eb315d51095313df66121d4b43f3b0bd37beecff19d5fd557a638432ac5dfac4992316c065a21734a63c590f605ccaf60b16a848652c27b49e224189b943f"
 func init() {
 	Logger.Level = logrus.InfoLevel
 	Logger.Formatter = &logrus.JSONFormatter{}
