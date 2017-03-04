@@ -16,7 +16,7 @@ func ServiceStatus(c *gin.Context) {
 	if Lock.State["status"] != "OK" {
 		c.Writer.WriteHeader(http.StatusServiceUnavailable)
 	}
-	bs, err := json.Marshal(Lock.State["status"])
+	bs, err := json.Marshal(Lock.State)
 	if err != nil {
 		//		TODO..do not panic; use a recovery handler
 		panic(err)
