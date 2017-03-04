@@ -37,6 +37,7 @@ func Info(args ...interface{}) {
 }
 
 var environment = os.Getenv("ENVIRONMENT")
+var region = os.Getenv("REGION")
 
 var bucket = "kubernetes-bitesize-" + environment
 
@@ -77,7 +78,7 @@ func createThirdPartyResource(tpr string) {
 
 	defer deleteThirdPartyResource(tpr)
 
-	var jsonStr = []byte(`{"apiVersion": "extensions/v1beta1","kind": "ThirdPartyResource","description": "test ThirdPartyResource validating stackstorm AWS S3 integration","metadata": {"name": "` + tpr + `","labels": {"type": "testtprs3", "bucket": "` + bucket + `"}},"versions": [{"name": "v1"}]}`)
+	var jsonStr = []byte(`{"apiVersion": "extensions/v1beta1","kind": "ThirdPartyResource","description": "test ThirdPartyResource validating stackstorm AWS S3 integration","metadata": {"name": "` + tpr + `","labels": {"type": "testtprs3", "bucket": "` + bucket + `", "region": "` + region + `"}},"versions": [{"name": "v1"}]}`)
 
 	Logger.Info("Create New thirdpartyresource: ", string(jsonStr))
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
@@ -97,7 +98,7 @@ func checkS3Object(tpr string) {
 
 	testServiceState := "Service Unavailable"
 
-	svc := s3.New(session.New(), &aws.Config{Region: aws.String("eu-west-1"), HTTPClient: client, DisableSSL: aws.Bool(true)})
+	svc := s3.New(session.New(), &aws.Config{Region: aws.String(region), HTTPClient: client, DisableSSL: aws.Bool(true)})
 
 	result, err := svc.GetObject(&s3.GetObjectInput{
 		Bucket: aws.String(bucket),
